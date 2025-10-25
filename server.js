@@ -14,6 +14,27 @@ const PORT = process.env.PORT || 3000;
 // Serve static files
 app.use(express.static('public'));
 
+// Log all requests for debugging
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
+
+// Add favicon route to prevent 404
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+// Root route explicitly serves index.html
+app.get('/', (req, res) => {
+    console.log('Serving index.html for root');
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+// Teacher route
+app.get('/teacher', (req, res) => {
+    console.log('Serving index.html for teacher');
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 // Game state
 let game = {
     started: false,
