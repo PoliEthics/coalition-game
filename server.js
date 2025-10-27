@@ -7,7 +7,7 @@ const io = require('socket.io')(http, {
         methods: ["GET", "POST"]
     },
     // Keep connections alive during inactivity
-    pingTimeout: 300000,       // Wait 5 minutes for pong response (increased from 60s)
+    pingTimeout: 600000,       // Wait 5 minutes for pong response (increased from 60s)
     pingInterval: 25000,       // Send ping every 25s
     upgradeTimeout: 30000,     // 30s to complete upgrade
     allowUpgrades: true,
